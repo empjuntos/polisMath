@@ -1,10 +1,12 @@
 from alpine:edge
 
+EXPOSE 3123
+
 ENV BUILD_DEPS="bash build-base libpng-dev zlib-dev autoconf automake libtool nasm curl" \
     RUN_DEPS="openssh-client openjdk8-jre" \
     LEIN_ROOT=1
 
-WORKDIR /build
+WORKDIR /polisMath
 COPY . .
 
 RUN \

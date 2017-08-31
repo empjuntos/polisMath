@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  polis-math:
+    container_name: polis-math
+    build: .
+    volumes:
+      - .:/polisMath
+    ports:
+      - 3123:3123
+    external_links:
+      - polisserver_default
+    networks:
+      - default
+      - polisserver_default
+    environment:
+      - DATABASE_URL=postgres://polis:polis@postgres:5432/polisdb
+      - DATABASE-URL=postgres://polis:polis@postgres:5432/polisdb
+
+networks:
+  polisserver_default:
+    external: true
