@@ -85,6 +85,6 @@
   :min-lein-version "2.3.0"
   :profiles {:dev {:dependencies [[org.clojure/test.check "0.9.0"]]
                    :source-paths ["src" "dev"]
-                   :env {:mongo-url "db/mongo.db"}}
+                   :env {:mongo-url "mongodb://mongo"}}
              :production {:env {}}})
 
