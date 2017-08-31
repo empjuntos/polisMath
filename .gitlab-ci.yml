@@ -6,8 +6,7 @@ stages:
 - build
 
 variables:
-  CONTAINER_TEST_IMAGE: registry.gitlab.com/empurrandojuntos/polismath:$CI_BUILD_REF_NAME
-  CONTAINER_RELEASE_IMAGE: registry.gitlab.com/empurrandojuntos/polismath:latest
+  IMAGE_NAME: registry.gitlab.com/empurrandojuntos/polismath
 
 before_script:
   - docker login -u "gitlab-ci-token" -p "$CI_JOB_TOKEN" $CI_REGISTRY
@@ -15,8 +14,10 @@ before_script:
 build to production:
   stage: build
   script:
-    - docker build -t $CONTAINER_TEST_IMAGE .
-    - docker push $CONTAINER_TEST_IMAGE
+    - docker build -t $IMAGE_NAME .
+    - docker push $IMAGE_NAME
+    - docker tag $IMAGE_NAME:latest $IMAGE_NAME:$CI_BUILD_REF_NAME
+    - docker push $IMAGE_NAME:$CI_BUILD_REF_NAME
   only:
     - /master/
   environment: production
