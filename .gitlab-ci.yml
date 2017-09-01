@@ -17,7 +17,7 @@ build to production:
     - docker build -t $RELEASE_IMAGE .
     - docker tag $RELEASE_IMAGE "$CI_REGISTRY_IMAGE:latest"
     - docker push $RELEASE_IMAGE
-    - docker push "CI_REGISTRY_IMAGE:latest"
+    - docker push "$CI_REGISTRY_IMAGE:latest"
   only:
     - /master/
   environment: production
