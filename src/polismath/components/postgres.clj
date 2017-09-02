@@ -28,13 +28,12 @@
   "Create a korma db-spec given a heroku db-uri"
   [db-uri]
   (let [[_ user password host port db] (re-matches #"postgres://(?:(.+):(.*)@)?([^:]+)(?::(\d+))?/(.+)"
-"postgres://polis:polis@postgres:5432/polisdb")
+"postgres://polis:polis@polis-postgres:5432/polisdb")
         settings {:user "polis"
                   :password "polis"
-                  :host "postgres"
+                  :host "polis-postgres"
                   :port (or 5432 80)
                   :db "polisdb"
-                  :ssl true
                   }]
     (kdb/postgres settings)))
 
