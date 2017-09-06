@@ -16,6 +16,7 @@ services:
     environment:
       - DATABASE_URL=postgres://polis:polis@postgres:5432/polisdb
       - DATABASE-URL=postgres://polis:polis@postgres:5432/polisdb
+      - MATH_ENV=dev
 
 networks:
   polisserver_default:
